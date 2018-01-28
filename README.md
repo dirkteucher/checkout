@@ -1,10 +1,10 @@
 
 
 # Quickstart
-Clone the repo
-npm install
-npm run dev
-npm run test
+Clone the repo <br />
+npm install <br />
+npm run dev <br />
+npm run test <br />
 
 
 ## Problem Description
