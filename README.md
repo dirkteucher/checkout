@@ -76,3 +76,5 @@ The testing currently being done is already quite extensive. The DOM can easily 
 1) Code coverage of the interior of the buy(), remove(), updateShoppingTotal() and checkPricingRules() is missing and needs to be included. I need to figure out how to stub the data being used inside those methods with Vue and Mocha. This is the only major component from the testing that is currently missing but as this was my first few hours of using Mocha with Vue I need to spend more time figuring that part out.
 
 2) Every single DOM elment could potentially be tested for availability. This would be trivial to do.
+## Preview
+![](https://raw.githubusercontent.com/dirkteucher/checkout/blob/master/demo.gif)
