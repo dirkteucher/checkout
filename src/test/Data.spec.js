@@ -3,7 +3,7 @@ import {shallow} from '@vue/test-utils'
 import ShoppingCart from '../components/ShoppingCart.vue'
 
 
-describe('Checking name of module and data', () =>{
+describe('Checking Data.spec.js', () =>{
     // Module name
     it('The name of the module is ShoppingBasket', () =>{
         expect(ShoppingCart.name).toBe("ShoppingBasket")
@@ -28,10 +28,10 @@ describe('Checking name of module and data', () =>{
     it('Check the pricing rules being listed', () =>{
         var data = ShoppingCart.data();
         expect(data.specialPricingCounter).toEqual({
-            a: 0,
-            b: 0,
-            c: 0,
-            d: 0
+            A: 0,
+            B: 0,
+            C: 0,
+            D: 0
           });
     })
 
@@ -39,22 +39,22 @@ describe('Checking name of module and data', () =>{
     it('Check the alphabet letters we are selling', () =>{
         var data = ShoppingCart.data();
         expect(data.shoppingListData).toEqual({
-            a : {
+            A : {
               itemName: "A",
               price: 50,
               currency: "GBP"
             },
-            b : {
+            B : {
               itemName: "B",
               price: 30,
               currency: "GBP"
             },
-            c : {
+            C : {
               itemName: "C",
               price: 20,
               currency: "GBP"
             },
-            d : {
+            D : {
               itemName: "D",
               price: 15,
               currency: "GBP"

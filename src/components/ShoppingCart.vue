@@ -3,10 +3,10 @@
     <h1>{{ msg }}</h1>
     
     <section id="alphabet-shopping-list">
-        <v-btn class="btn theme--dark primary" @click="buy('a')" color="blue">A</v-btn>
-        <v-btn class="btn theme--dark primary" @click="buy('b')" color="blue">B</v-btn>
-        <v-btn class="btn theme--dark primary"  @click="buy('c')" color="blue">C</v-btn>
-        <v-btn class="btn theme--dark primary"  @click="buy('d')" color="blue">D</v-btn>
+        <v-btn class="btn theme--dark primary" @click="buy('A')" color="blue">A</v-btn>
+        <v-btn class="btn theme--dark primary" @click="buy('B')" color="blue">B</v-btn>
+        <v-btn class="btn theme--dark primary"  @click="buy('C')" color="blue">C</v-btn>
+        <v-btn class="btn theme--dark primary"  @click="buy('D')" color="blue">D</v-btn>
     </section>
 
     <section class="alphabet-shopping-cart">
@@ -30,28 +30,28 @@ export default {
       totalPrice: 0,
       shoppingCart: [],
       specialPricingCounter: {
-        a: 0,
-        b: 0,
-        c: 0,
-        d: 0
+        A: 0,
+        B: 0,
+        C: 0,
+        D: 0
       },
       shoppingListData: {
-        a : {
+        A : {
           itemName: "A",
           price: 50,
           currency: "GBP"
         },
-        b : {
+        B : {
           itemName: "B",
           price: 30,
           currency: "GBP"
         },
-        c : {
+        C : {
           itemName: "C",
           price: 20,
           currency: "GBP"
         },
-        d : {
+        D : {
           itemName: "D",
           price: 15,
           currency: "GBP"
@@ -64,22 +64,8 @@ export default {
       const shoppingItems = "shoppingItems";
       this.shoppingCart.push({shoppingItems: this.shoppingListData[itemID]});
       this.specialPricingCounter[itemID] = this.specialPricingCounter[itemID]+1;
-
-      // The following pricing rules can easily be refactored into separate functions as complexity of pricing rules grows in numbers
-      // The exact specifications would need to be discussed with the product manager/owner as there is a number of 
-      // ways in which these rules could be handled
-      // ++++++ Rule 1 - If purchasing 3 or more "A's" the price per "A" = £43.3 and the total is rounded up ++++++
-      if(this.specialPricingCounter.a > 2){
-        this.shoppingListData.a.price = 43.3;
-      }else{
-        this.shoppingListData.a.price = 50;
-      }
-      //  ++++++ Rule 2 - If purchasing 2 or more "B's" the price per "B" = £22.5  and the total is rounded up ++++++
-      if(this.specialPricingCounter.b > 1){  // A ternary could be used here for leaner code
-        this.shoppingListData.b.price = 22.5;
-      }else{
-        this.shoppingListData.b.price = 30;
-      }
+      // Check the pricing rules
+      this.checkPricingRules();
       this.updateShoppingTotal();
     },
     remove: function(itemName){
@@ -88,20 +74,37 @@ export default {
           if(this.shoppingCart[item].shoppingItems.itemName === itemName){
             localApp.shoppingCart.splice(item, 1);
             this.specialPricingCounter[itemName] = this.specialPricingCounter[itemName]-1;
+            this.checkPricingRules();
             this.updateShoppingTotal();
             return;
           }
         }
+        this.checkPricingRules();
         this.updateShoppingTotal();
     },
     updateShoppingTotal: function(){
       this.totalPrice = 0;
 
       for(var items in this.shoppingCart){
-        console.log(this.shoppingCart[items].shoppingItems.price)
         this.totalPrice = this.totalPrice + this.shoppingCart[items].shoppingItems.price;
       }
       this.totalPrice = Math.ceil(this.totalPrice);
+    },
+    checkPricingRules: function(){
+      // The exact specifications would need to be discussed with the product manager/owner as there is a number of 
+      // ways in which these rules could be handled
+      // ++++++ Rule 1 - If purchasing 3 or more "A's" the price per "A" = £43.3 and the total is rounded up ++++++
+      if(this.specialPricingCounter.A > 2){
+        this.shoppingListData.A.price = 43.3;
+      }else{
+        this.shoppingListData.A.price = 50;
+      }
+      //  ++++++ Rule 2 - If purchasing 2 or more "B's" the price per "B" = £22.5  and the total is rounded up ++++++
+      if(this.specialPricingCounter.B > 1){  // A ternary could be used here for leaner code
+        this.shoppingListData.B.price = 22.5;
+      }else{
+        this.shoppingListData.B.price = 30;
+      }
     }
   }
 }
