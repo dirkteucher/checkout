@@ -77,4 +77,4 @@ The testing currently being done is already quite extensive. The DOM can easily 
 
 2) Every single DOM elment could potentially be tested for availability. This would be trivial to do.
 ## Preview
-![](https://raw.githubusercontent.com/dirkteucher/checkout/blob/master/demo.gif)
+![](https://raw.githubusercontent.com/dirkteucher/checkout/master/demo.gif)
