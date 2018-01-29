@@ -61,12 +61,12 @@ and
 
 ## Component info
 
-The important files to view in the repo are:
-
-src/components/ShoppingCart.vue   (LOGIC)
-test/Data.spec.js  (Unit Tests)
-test/DOM.spec.js  (Unit Tests)
-test/Methods.spec.js  (Unit Tests)
+The important files to view in the repo are:<br />
+<br />
+src/components/ShoppingCart.vue   (LOGIC) <br />
+test/Data.spec.js  (Unit Tests)<br />
+test/DOM.spec.js  (Unit Tests)<br />
+test/Methods.spec.js  (Unit Tests)<br />
 
 
 ## Testing info
